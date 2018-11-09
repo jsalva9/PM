@@ -1,4 +1,4 @@
-# PM
+# Programació Matemàtica: Pràctica Símplex
 ## simplex_coding.m
 Conté el "main" del simplex. Actualment crida una funció no creada encara que resol el problema de fae 1 i retorna el vector vb de la SBF inicial
 ## simplex_function.m
