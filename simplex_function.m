@@ -1,9 +1,9 @@
-[vb, vn, xb, z, iout] = simplex( c, A, b, vb, vn, xb, z, regla)
+function [vb, vn, xb, z, iout] = simplex( c, A, b, vb, vn, xb, z, regla)
 
 B_inv = inv(A(:,vb));
 
 % 1. Vector de costos
-r = c'(:,vn) - c'(:, vb)*B_inv*A(:,vn)
+r = (c(:,vn))' - (c(:, vb))'*B_inv*A(:,vn)
 
 if regla == 1   % apliquem cost reduit mes negatiu
     x = min(r);
@@ -29,7 +29,7 @@ if regla == 2    % apliquem regla de Bland
 end
 
 % 2. Direcció bàsica
-db' = -B_inv*A(:,q)
+db = -B_inv*A(:,q)
 if min(db) >=0
     iout = 2    % problema il·limitat
     return;
@@ -40,7 +40,7 @@ theta = 0;
 p = 0;
 for i = 1:m
     if db(vb(i)) < 0 & -xb(i)/db(vb(i)) < theta
-        theta = -xb(i)/db(vb(i);
+        theta = (-xb(i))/db(vb(i));
         p = i;
     end
 end
