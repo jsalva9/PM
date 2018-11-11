@@ -7,16 +7,14 @@ sizeA = [10 20];
 A = fscanf(Arxiu,formatSpec,sizeA);
 sizeb = [1 10];
 b = fscanf(Arxiu,formatSpec,sizeb);
-
+b = b';
 
 [m,n] = size(A);
-
-vb = zeros(m);
-vn = zeros(n - m);
-
+vb = zeros(1,m);
+vn = zeros(1,n - m);
 % Falta la funció "fase1". Creació del problema de F1;
-[vb] = fase_1(A,b,m,n);
-
+[vb1] = fase_1(A,b,m,n);
+vb = vb1;
 bool trobat;
 iter = 1;
 for i = 1:n

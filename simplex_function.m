@@ -1,4 +1,4 @@
-function [vb, vn, xb, z, iout] = simplex( c, A, b, vb, vn, xb, z, regla)
+[vb, vn, xb, z, iout] = simplex( c, A, b, vb, vn, xb, z, regla)
 
 B_inv = inv(A(:,vb));
 
