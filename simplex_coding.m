@@ -14,7 +14,8 @@ vn = zeros(1,n - m);
 % Falta la funció "fase1". Creació del problema de F1;
 [vb1] = fase_1(A,b,m,n);
 vb = vb1;
-bool trobat;
+
+trobat = false;
 iter = 1;
 for i = 1:n
     trobat = false;
@@ -31,9 +32,11 @@ end
 
 xb = inv(A(:,vb))*b;
 
-z = c(:,vb)*xb;
+z = c(vb,:)'*xb;
 
 niter = 0;
+iout = 0;
+regla = 2;
 while (iout == 0)
     niter = niter + 1;
     
