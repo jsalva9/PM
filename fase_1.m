@@ -1,20 +1,16 @@
 function [vb] = fase_1(A,b,m,n)
-c1 = zeros(1,n+m);
-A1 = A;
-for i = 1:m
-    A1(n+1) = 1;
-end
-for i = 1:m
-    new = zeros(m,1);
-    new(m) = 1;
-    A1 = [A new];
-end
+auxi1 = zeros(1,n);
+auxi2 = ones(1,m);
+c1 = [auxi1 auxi2];
+aux = eye(m);
+A1 = [A aux];
 vb1 = n+1:n+m;
 vn1 = 1:n;
-abanico = A1(:,vb);
+abanico = A1(:,vb1);
 xb1 = inv(abanico)*b;
-z1 = c(:,vb)*xb; 
+z1 = c1(:,vb1)*xb1; 
 iout = 0;
+niter = 0;
 while (iout == 0)
     niter = niter + 1;
     
