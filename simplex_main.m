@@ -11,11 +11,12 @@ A = A';
 [m,n] = size(A);
 vb = zeros(1,m);
 vn = zeros(1,n - m);
-% Falta la funció "fase1". Creació del problema de F1;
+
 [vb1] = fase_1(A,b,m,n);
 vb = vb1;
+vb
 
-trobat = false;
+% L'error està en crear vn com a 1..n\vb
 iter = 1;
 for i = 1:n
     trobat = false;
@@ -24,12 +25,12 @@ for i = 1:n
             trobat = true;
         end
     end
-    if(trobat == false) 
+    if (trobat == false) 
         vn(iter) = i;
-        ++iter;
+        iter = iter + 1;
     end
 end
-
+vn
 xb = inv(A(:,vb))*b;
 
 z = c(vb,:)'*xb;

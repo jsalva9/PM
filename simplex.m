@@ -2,6 +2,7 @@ function [vb, vn, xb, z, iout] = simplex( c, A, b, vb, vn, xb, z, regla)
 [m, n] = size(A);
 B_inv = inv(A(:,vb));
 
+
 % 1. Vector de costos
 r = (c(vn,:))' - (c(vb,:))'*B_inv*A(:,vn);
 
@@ -32,7 +33,7 @@ if regla == 2    % apliquem regla de Bland
 end
 
 % 2. Direcció bàsica
-db = -B_inv*A(:,q)
+db = -B_inv*A(:,q);
 if min(db) >=0
     iout = 2    % problema il·limitat
     return;
@@ -54,7 +55,6 @@ end
 
 % 4. Actualitzacions per retornar en executar simple_function
 
-% vb i vn actualitzats
 j = vb(p);
 vb(p) = vn(q);
 vn(q) = j;
