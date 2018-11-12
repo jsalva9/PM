@@ -18,4 +18,5 @@ while (iout == 0)
     % regla = 2: simplex escollint VNB amb regla de Bland
     [vb1, vn1, xb1, z1, iout] = simplex( c1, A1, b, vb1, vn1, xb1, z1,2);
 end
+
 vb = vb1;

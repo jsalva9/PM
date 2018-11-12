@@ -16,7 +16,7 @@ vn = zeros(1,n - m);
 vb = vb1;
 vb
 
-% L'error està en crear vn com a 1..n\vb
+
 iter = 1;
 for i = 1:n
     trobat = false;
