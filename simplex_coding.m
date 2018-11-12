@@ -1,22 +1,21 @@
 clear;
 Arxiu = fopen('dades.txt','r');
 formatSpec = '%f';
-sizec = [1 20];
+sizec = [20 1];
 c = fscanf(Arxiu,formatSpec,sizec);
-sizeA = [10 20];
+sizeA = [20 10];
 A = fscanf(Arxiu,formatSpec,sizeA);
-sizeb = [1 10];
+A = A';
+sizeb = [10 1];
 b = fscanf(Arxiu,formatSpec,sizeb);
-b = b';
 
 [m,n] = size(A);
 vb = zeros(1,m);
 vn = zeros(1,n - m);
-% Falta la funció "fase1". Creació del problema de F1;
 [vb1] = fase_1(A,b,m,n);
 vb = vb1;
 bool trobat;
-iter = 1;
+
 for i = 1:n
     trobat = false;
     for j = 1:m
