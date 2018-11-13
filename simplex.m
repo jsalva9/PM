@@ -65,6 +65,6 @@ vn(q) = j;
 
 xb = inv(A(:,vb))*b;
 z = c(vb,:)'*xb;
-disp(sprintf('Iteracio %3d : N(q) = %3d , rq = %8.3f , B(p) = %3d , theta* = %8.3f , z = %8.3f' ,niter,vb(p),r(q),vn(q),theta,z))
+disp(sprintf('Iteracio %3d : N(q) = %3d , rq = %9.3f , B(p) = %3d , theta* = %8.3f , z = %8.3f' ,niter,vb(p),r(q),vn(q),theta,z))
 
 iout = 0;
