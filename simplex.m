@@ -30,7 +30,7 @@ if regla == 2    % apliquem regla de Bland
     end
 end
 
- if (q == n + m + 1 | q == -1) 
+ if (q == -1) 
         iout = 1;       % SBF optima trobada
         return;
  end
