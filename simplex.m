@@ -38,7 +38,7 @@ end
 % 2. Direccio basica
 db = -B_inv*A(:,vn(q));
 if min(db) >=0
-    iout = 2    % identificacio del problema il.limitat
+    iout = 2;    % identificacio del problema il.limitat
     return;
 end
 
@@ -54,7 +54,7 @@ for i = 1:m
 end
 
 if theta < tol
-    iout = 3    % SBF degenerada
+    iout = 3;    % SBF degenerada
     return;
 end
 
@@ -68,3 +68,4 @@ z = c(vb,:)'*xb;
 disp(sprintf('Iteracio %3d : N(q) = %3d , rq = %9.3f , B(p) = %3d , theta* = %8.3f , z = %8.3f' ,niter,vb(p),r(q),vn(q),theta,z))
 
 iout = 0;
+end

@@ -9,5 +9,4 @@ function [A, b, c, m, n] = read()
     b = fscanf(Arxiu,formatSpec,sizeb);
     A = A';
     [m,n] = size(A);
-
 end

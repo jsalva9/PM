@@ -30,8 +30,8 @@ for i = 1:m
     end
 end
 if correcte == true
-    f1out = 1;      % La base trobada no contÃ© variables artificals
+    f1out = 1;      % La base trobada no conté variables artificals
     disp(sprintf('Iteracio %3d : SBF inicial trobada', niter))
-else f1out = 2;     % La base trobada contÃ© variables artificials
+else f1out = 2;     % La base trobada conté variables artificials
 end
 end

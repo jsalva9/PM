@@ -1,6 +1,6 @@
 clear;
 disp('Resolucio de PL amb algorisme del simplex primal.')
-regla = 2;
+regla = 1;
 if regla == 1
     disp('Simplex amb regla del cost reduit mes negatiu.')
 else disp ('Simplex amb Regla de Bland.')
@@ -14,7 +14,7 @@ disp('Executant Fase I...')
 [vb,f1out,niter] = fase_1(A,b,m,n,regla);
 
 if f1out == 0
-    disp('RegiÃ³ factible buida');
+    disp('Regió factible buida');
     return
 end
 if f1out == 2
