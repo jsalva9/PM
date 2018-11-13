@@ -7,3 +7,5 @@ Funció del simplex que es va crida iterativament
 Resol el problema de fase1 i retorna vb variables bàsiques
 ## read.m
 Llegeix c, A, b d'un fitxer
+
+output66.txt es aplicar el nostre algorisme als problemes del conjunt de dades 66 amb les dues regles
