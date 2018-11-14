@@ -1,7 +1,6 @@
-function [vb, vn, xb, z, iout] = simplex(c, A, b, vb, vn, xb, z, regla, niter)
+function [vb, vn, xb, z,B_inv, iout] = simplex(c, A, b, vb, vn, xb, z,B_inv, regla, niter)
 tol = 1e-12;
 [m, n] = size(A);
-B_inv = inv(A(:,vb));
 
 % 1. Vector de costos
 r = (c(vn,:))' - (c(vb,:))'*B_inv*A(:,vn);
@@ -23,7 +22,7 @@ if regla == 2    % apliquem regla de Bland
     for i = 1:n-m
         if (r(i) < 0)
             if (vn(i) < minim)
-                q = i; % es INDEX de la VNB d'entrada. Entra vn(q)
+                q = i;  % INDEX de la VNB d'entrada. Entra vn(q)
                 minim = vn(i);
             end
         end
@@ -37,15 +36,14 @@ end
     
 % 2. Direccio basica
 db = -B_inv*A(:,vn(q));
-if min(db) >=0
-    iout = 2;    % identificacio del problema il.limitat
+if min(db) >= tol
+    iout = 2;           % Problema il.limitat
     return;
 end
 
-
 % 3. Longitud de pas
-theta = inf;
-p = 0;              % p es l'INDEX de la vb de sortida
+theta = inf;    
+p = 0;                 % INDEX de la vb de sortida
 for i = 1:m
     if (db(i) < 0) & (-xb(i)/db(i) < theta)
         theta = -xb(i)/db(i);
@@ -54,18 +52,27 @@ for i = 1:m
 end
 
 if theta < tol
-    iout = 3;    % SBF degenerada
+    iout = 3;       % SBF degenerada
     return;
 end
 
-% 4. Actualitzacions per tornar en executar simple_function
-j = vb(p);
+% 4. Actualitzacions
+k = vb(p);
 vb(p) = vn(q);
-vn(q) = j;
+vn(q) = k;
 
-xb = inv(A(:,vb))*b;
+% Actualització de la inversa al nou conjunt de vb
+aux = eye(m);
+for i = 1:m
+    aux(i,p) = -db(i)/db(p);
+end
+aux(p,p) = -1/db(p);
+B_inv = aux*B_inv;
+
+xb = B_inv*b;
 z = c(vb,:)'*xb;
-disp(sprintf('Iteracio %3d : N(q) = %3d , rq = %9.3f , B(p) = %3d , theta* = %8.3f , z = %8.3f' ,niter,vb(p),r(q),vn(q),theta,z))
+
+fprintf('Iteracio %2d : N(q) = %2d , rq = %11.3f , B(p) = %2d , theta* = %7.3f , z = %8.3f' ,niter,vb(p),r(q),vn(q),theta,z)
 
 iout = 0;
 end
